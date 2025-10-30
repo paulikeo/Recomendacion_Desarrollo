@@ -1,0 +1,240 @@
+/* src/App.css */
+
+/* --- Variables de color inspiradas en tu globals.css (look Spotify) --- */
+:root {
+  --background: #121212; /* Era #000000, pero #121212 es más suave */
+  --foreground: #ffffff;
+  --card: #181818;
+  --primary: #1DB954; /* Verde Spotify */
+  --primary-foreground: #000000;
+  --muted: #282828;
+  --muted-foreground: #b3b3b3;
+  --border: #282828;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* --- Contenedor Principal --- */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  color: var(--muted-foreground);
+}
+
+/* --- Formulario de Búsqueda --- */
+.search-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.search-input-wrapper {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-wrapper svg {
+  position: absolute;
+  left: 1rem;
+  color: var(--muted-foreground);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem; /* Espacio para el ícono */
+  font-size: 1rem;
+  background-color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 50px; /* Redondeado */
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+}
+
+.search-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.search-button:hover:not(:disabled) {
+  background-color: #1ed760;
+  transform: scale(1.03);
+}
+
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Sección de Resultados --- */
+.results-section {
+  min-height: 300px;
+}
+
+.results-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Grid de Música --- */
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- Tarjeta de Música (Music Card) --- */
+.music-card {
+  background-color: var(--card);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: background-color 0.2s;
+}
+
+.music-card:hover {
+  background-color: var(--muted);
+}
+
+.music-card-image-placeholder {
+  width: 100%;
+  padding-bottom: 100%; /* Truco para aspect-ratio 1:1 */
+  position: relative;
+  background-color: var(--muted);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.music-card-image-placeholder svg {
+  width: 40%;
+  height: 40%;
+  color: var(--muted-foreground);
+}
+
+.music-card-content {
+  min-height: 60px; /* Para alinear tarjetas de diferente texto */
+}
+
+.music-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.25rem 0;
+  /* Para truncar texto largo */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-card-artist {
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Estado Vacío (Empty State) --- */
+.empty-state {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--muted-foreground);
+}
+
+.empty-state svg {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  font-size: 1.2rem;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+/* --- Mensaje de Error --- */
+.error-message {
+  text-align: center;
+  color: #d4183d; /* Color "destructive" de tu globals.css */
+  font-size: 1.1rem;
+  padding: 2rem;
+}
+
+/* --- Animación de Carga (Skeleton) --- */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.skeleton-img {
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 6px;
+  background-color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.skeleton-text {
+  height: 20px;
+  width: 90%;
+  border-radius: 4px;
+  background-color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-text.short {
+  width: 60%;
+}

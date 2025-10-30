@@ -1,0 +1,714 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* ============================================
+   APP CONTAINER
+   ============================================ */
+
+.app {
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #282828;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  padding: 16px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  background-color: #1db954;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main {
+  padding: 48px 0;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #b3b3b3;
+  margin-bottom: 32px;
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b3b3b3;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 20px 0 48px;
+  background-color: #121212;
+  border: 2px solid #282828;
+  border-radius: 26px;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: #b3b3b3;
+}
+
+.search-input:focus {
+  border-color: #1db954;
+  box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.1);
+}
+
+.search-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.search-button {
+  height: 52px;
+  padding: 0 32px;
+  background-color: #1db954;
+  color: #000000;
+  border: none;
+  border-radius: 26px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.search-button:hover:not(:disabled) {
+  background-color: #1ed760;
+  transform: scale(1.05);
+}
+
+.search-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   ERROR ALERT
+   ============================================ */
+
+.error-alert {
+  max-width: 800px;
+  margin: 0 auto 32px;
+  padding: 16px 20px;
+  background-color: rgba(212, 24, 61, 0.1);
+  border: 1px solid rgba(212, 24, 61, 0.5);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d4183d;
+  font-size: 14px;
+}
+
+.error-alert svg {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESULTS SECTION
+   ============================================ */
+
+.results-section {
+  margin-top: 48px;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.results-header h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.results-count {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+/* ============================================
+   MUSIC GRID
+   ============================================ */
+
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .music-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .music-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* ============================================
+   MUSIC CARD
+   ============================================ */
+
+.music-card {
+  background-color: #181818;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.music-card:hover {
+  background-color: #282828;
+}
+
+.music-card-image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  margin-bottom: 16px;
+  background-color: #282828;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.music-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.music-card:hover .music-card-image {
+  transform: scale(1.05);
+}
+
+.music-card-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b3b3b3;
+}
+
+.play-button {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 48px;
+  height: 48px;
+  background-color: #1db954;
+  color: #000000;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  animation: fadeInUp 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #1ed760;
+  transform: scale(1.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.music-card-content {
+  overflow: hidden;
+}
+
+.music-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.music-card:hover .music-card-title {
+  color: #1db954;
+}
+
+.music-card-artist {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-card-year {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+
+.skeleton-card {
+  background-color: #181818;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.skeleton-image {
+  width: 100%;
+  padding-bottom: 100%;
+  background: linear-gradient(
+    90deg,
+    #282828 25%,
+    #333333 50%,
+    #282828 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-title {
+  height: 16px;
+  background: linear-gradient(
+    90deg,
+    #282828 25%,
+    #333333 50%,
+    #282828 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-artist {
+  height: 14px;
+  width: 75%;
+  background: linear-gradient(
+    90deg,
+    #282828 25%,
+    #333333 50%,
+    #282828 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-year {
+  height: 14px;
+  width: 50%;
+  background: linear-gradient(
+    90deg,
+    #282828 25%,
+    #333333 50%,
+    #282828 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #181818 0%, #282828 100%);
+  border-radius: 50%;
+  margin-bottom: 24px;
+  color: #1db954;
+  position: relative;
+}
+
+.empty-icon::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle,
+    rgba(29, 185, 84, 0.2) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(30px);
+  z-index: -1;
+}
+
+.empty-icon.error {
+  color: #d4183d;
+  background: linear-gradient(135deg, #181818 0%, #2a1a1f 100%);
+}
+
+.empty-icon.error::before {
+  background: radial-gradient(
+    circle,
+    rgba(212, 24, 61, 0.2) 0%,
+    transparent 70%
+  );
+}
+
+.empty-state h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  font-size: 16px;
+  color: #b3b3b3;
+  margin-bottom: 24px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reset-button {
+  padding: 12px 24px;
+  background-color: transparent;
+  color: #1db954;
+  border: 2px solid #1db954;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-button:hover {
+  background-color: #1db954;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.reset-button:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .results-header h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .main {
+    padding: 32px 0;
+  }
+
+  .music-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .music-card {
+    padding: 12px;
+  }
+}
+
+/* ============================================\n   FILTROS (NUEVO INPUT DE AÑO)\n   ============================================ */
+
+/*
+ * Usamos esta clase para el input de texto del AÑO.
+ * Lo hacemos lucir IGUAL que el <select>
+*/
+.filter-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #121212;
+  border: 1px solid #282828;
+  border-radius: 24px;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 500;
+  appearance: none; /* Quita el estilo feo del navegador */
+  cursor: text;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-input::placeholder {
+  color: #b3b3b3;
+  opacity: 0.7;
+}
+
+.filter-input:hover {
+  border-color: #535353;
+  color: #ffffff;
+}
+
+.filter-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* * Ajuste de la base de los filtros para que entren más
+ * (Puedes ajustar este valor si no te gusta)
+*/
+.filter-wrapper {
+  position: relative;
+  flex-basis: 180px; /* Reducimos la base para que entren más filtros */
+  flex-grow: 1; /* Permitimos que crezcan si hay espacio */
+}
+
+/* ============================================\n   MODO DE BÚSQUEDA (TABS)\n   ============================================ */
+
+.search-mode-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  border-bottom: 1px solid #282828;
+  padding-bottom: 16px;
+}
+
+.search-mode-button {
+  padding: 10px 16px;
+  background-color: transparent;
+  color: #b3b3b3;
+  border: 1px solid #282828;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-mode-button:hover {
+  background-color: #282828;
+  color: #ffffff;
+}
+
+.search-mode-button.active {
+  background-color: #1DB954; /* Verde Spotify */
+  color: #000000;
+  border-color: #1DB954;
+}
+
+/* Ajustes al formulario para que funcione con las pestañas */
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 20px; /* Espacio después de las pestañas */
+}
+
+/* Hacemos que el wrapper del filtro ocupe el espacio principal */
+.search-input-wrapper,
+.filter-wrapper {
+  flex: 1 1 300px;
+}
+
+/* Hacemos que el botón de buscar siempre esté al final */
+.search-button {
+  flex-basis: 120px;
+  flex-grow: 0;
+}
+
+/* ============================================\n   ESTILOS DE IMAGEN DE CARÁTULA\n   ============================================ */
+
+.card-image {
+  /* ... tus estilos existentes ... */
+  /* Asegúrate de que el contenedor de la imagen funcione bien */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #181818; /* Color de fondo mientras carga */
+}
+
+.card-image-real {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que la imagen cubra el espacio sin deformarse */
+  border-radius: 8px; /* Redondea las esquinas */
+}
+ 
